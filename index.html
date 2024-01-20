@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #121212;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0; /* Removendo margens padrão do body */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%; /* 100% da largura disponível */
+            max-width: 400px; /* Largura máxima do container */
+        }
+
+        .logo {
+            width: 200px;
+            margin-bottom: 20px;
+            align-self: flex-start; /* Alinha a logo à esquerda no início do container */
+        }
+
+        .title {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%; /* Alterado para ocupar 100% da largura disponível */
+            height: 40px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .button-google {
+            background-color: white;
+            color: #121212;
+        }
+
+        .button-facebook {
+            background-color: #3b5998;
+            color: white;
+        }
+
+        .button-apple {
+            background-color: #000000;
+            color: white;
+        }
+
+        .button-phone {
+            background-color: #1db954;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%; /* Alterado para ocupar 100% da largura disponível */
+            margin-bottom: 10px;
+        }
+
+        .input {
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: 20px;
+            background-color: #282828;
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .input:focus {
+            outline: none;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox input {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .button-login {
+            background-color: #1db954;
+            color: white;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://i.ibb.co/ZXxZ6nt/Spotify-Logo-png-RGB-Green.png" class="logo" alt="Spotify logo">
+        </div>
+        <div class="title">Entrar no Spotify</div>
+        <button class="button button-google"><img src="https://i.ibb.co/ws8LHSw/google-37.png" class="icon" alt="Google logo">Continuar com o Google</button>
+        <button class="button button-facebook"><img src="https://i.ibb.co/cJ4SZkH/Facebook-f-logo-2019-svg.png" class="icon" alt="Facebook logo">Continuar com o Facebook</button>
+        <button class="button button-apple"><img src="https://i.ibb.co/k9P2vH3/ca86fb1a51f4761d1246518ee7640010.png" class="icon" alt="Apple logo">Continuar com a Apple</button>
+        <button class="button button-phone"><img src="https://i.ibb.co/Mf9YsM7/icone-telefone-png-download-3.png" class="icon" alt="Phone icon">Continuar com um número de telefone</button>
+        <form class="form" id="form" onsubmit="return validateForm()">
+            <input type="text" class="input" id="email" placeholder="E-mail ou nome de usuário">
+            <input type="password" class="input" id="password" placeholder="Senha">
+            <div class="checkbox"><input type="checkbox" id="remember">Lembrar de mim</div>
+            <button type="submit" class="button button-login">Entrar</button>
+            <div class="error" id="error"></div>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var error = document.getElementById("error");
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            var usernameRegex = /^[a-zA-Z0-9._-]+$/;
+            if (email == "" || password == "") {
+                error.innerHTML = "Por favor, preencha todos os campos.";
+                return false;
+            } else if (!emailRegex.test(email) && !usernameRegex.test(email)) {
+                error.innerHTML = "Por favor, digite um e-mail ou nome de usuário válido.";
+                return false;
+            } else {
+                error.innerHTML = "";
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
